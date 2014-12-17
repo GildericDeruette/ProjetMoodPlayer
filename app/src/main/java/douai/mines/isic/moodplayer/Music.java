@@ -10,6 +10,10 @@ public class Music {
     private File fichier;
     private Humeur humeurPrincipale;
 
+    public Music(File fichier){
+        this.fichier=fichier;
+        this.nom=fichier.getName();
+    }
 
     public String getNom() {
         return nom;
@@ -34,6 +38,8 @@ public class Music {
     public void setHumeurPrincipale(Humeur humeurPrincipale) {
         this.humeurPrincipale = humeurPrincipale;
     }
-
+    public String toString(){
+        return nom;
+    }
 
 }

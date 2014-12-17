@@ -19,8 +19,8 @@ import java.util.List;
 public class MoodPlayer extends ListActivity {
 
     private static final String MEDIA_PATH = new String("/sdcard/");
-    private List<String> songs = new ArrayList<String>();
     private MediaPlayer mediaPlayer = new MediaPlayer();
+    private MoodPlayList moodPlayList= new MoodPlayList();
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -37,10 +37,10 @@ public class MoodPlayer extends ListActivity {
         File home = new File(MEDIA_PATH);
         if (home.listFiles( new MP3Filter()).length > 0) {
             for (File file : home.listFiles( new MP3Filter())) {
-                songs.add(file.getName());
+                moodPlayList.addSong(new Music(file));
             }
 
-            ArrayAdapter<String> songList = new ArrayAdapter<String>(this,R.layout.song_item,songs);
+            ArrayAdapter<String> songList = new ArrayAdapter<String>(this,R.layout.song_item, moodPlayList.getListe());
             setListAdapter(songList);
         }
     }
@@ -50,7 +50,7 @@ public class MoodPlayer extends ListActivity {
         try {
 
             mediaPlayer.reset();
-            mediaPlayer.setDataSource(MEDIA_PATH + songs.get(position));
+            mediaPlayer.setDataSource(MEDIA_PATH + moodPlayList.getListe().get(position));
             mediaPlayer.prepare();
             mediaPlayer.start();
         } catch(IOException e) {
