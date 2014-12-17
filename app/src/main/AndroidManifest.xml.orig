@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="douai.mines.isic.moodplayer" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MoodPlayer"
+            class=".MoodPlayer"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:value="android.intent.action.MAIN" android:name="android.intent.action.MAIN"/>
+                <category android:value="android.intent.category.LAUNCHER" android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+<<<<<<< HEAD
+    <service class=".MPService" android:process=":remote" android:name=".MPService"/>
+=======
+>>>>>>> 81e043d6d40000a70cc448d95d3a2c4b65ef7d9f
+</manifest>
