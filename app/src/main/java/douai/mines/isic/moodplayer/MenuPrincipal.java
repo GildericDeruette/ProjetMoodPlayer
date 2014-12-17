@@ -1,34 +1,28 @@
 package douai.mines.isic.moodplayer;
 
-import android.app.ListActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import android.os.IBinder;
+
 import android.widget.TextView;
 
 /**
  * Created by Gildéric on 10/12/2014.
  */
-public class MoodPlayer extends ListActivity {
+public class MenuPrincipal extends Activity{
 
-    private static final String MEDIA_PATH = new String("/sdcard/");
-    private List<String> songs = new ArrayList<String>();
-    private MediaPlayer mp = new MediaPlayer();
+
     private Button humeur_btn;
     private Button listeSelonHumeur_btn;
     private Button listeGlobale_btn;
-    private TextView untexteView;
     private EditText editText;
 
 
@@ -42,7 +36,13 @@ public class MoodPlayer extends ListActivity {
                 @Override
                 public void onClick(View v) {
                     editText.setText("111");
-                    untexteView.setText("helllo");
+
+                    try{
+                      //  Intent intent =new Intent(MenuPrincipal.this,FichierChoisir.class);
+                     //   startActivityForResult(intent, MY_REQUEST_ID);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
             });
 
@@ -51,7 +51,7 @@ public class MoodPlayer extends ListActivity {
             listeSelonHumeur_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    untexteView.setText("helllo2");
+
                    // editText.setText("222");
                 }
             });
@@ -61,7 +61,7 @@ public class MoodPlayer extends ListActivity {
                 @Override
                 public void onClick(View v) {
                     //editText.setText("333");
-                    untexteView.setText("helllo3");
+
 
                 }
             });
@@ -76,33 +76,9 @@ public class MoodPlayer extends ListActivity {
         humeur_btn = (Button) findViewById(R.id.humeur_btn);
         listeSelonHumeur_btn = (Button) findViewById(R.id.listeSelonHumeur_btn);
         listeGlobale_btn = (Button) findViewById(R.id.listeGlobale_btn);
-        untexteView = (TextView) findViewById(R.id.untexteView);
         editText = (EditText) findViewById(R.id.editText);
         editText.setText("000");
 
     }
-    public void updateSongList() {
-        File home = new File(MEDIA_PATH);
-        if (home.listFiles( new MP3Filter()).length > 0) {
-            for (File file : home.listFiles( new MP3Filter())) {
-                songs.add(file.getName());
-            }
 
-            ArrayAdapter<String> songList = new ArrayAdapter<String>(this,R.layout.song_item,songs);
-            setListAdapter(songList);
-        }
-    }
-
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        try {
-
-            mp.reset();
-            mp.setDataSource(MEDIA_PATH + songs.get(position));
-            mp.prepare();
-            mp.start();
-        } catch(IOException e) {
-            Log.v(getString(R.string.app_name), e.getMessage());
-        }
-    }
 }
