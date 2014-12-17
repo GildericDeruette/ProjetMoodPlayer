@@ -8,7 +8,7 @@ import java.io.File;
 public class Music {
     private String nom;
     private File fichier;
-    private Humeur humeurPrincipale;
+    private Mood humeurPrincipale;
 
     public Music(File fichier){
         this.fichier=fichier;
@@ -31,11 +31,11 @@ public class Music {
         this.fichier = fichier;
     }
 
-    public Humeur getHumeurPrincipale() {
+    public Mood getHumeurPrincipale() {
         return humeurPrincipale;
     }
 
-    public void setHumeurPrincipale(Humeur humeurPrincipale) {
+    public void setHumeurPrincipale(Mood humeurPrincipale) {
         this.humeurPrincipale = humeurPrincipale;
     }
     public String toString(){

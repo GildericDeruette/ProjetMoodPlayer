@@ -11,6 +11,7 @@ import android.widget.Button;
 
 public class MoodActivity extends ActionBarActivity {
 
+    Mood moodChosen= new Mood("Happy");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +21,9 @@ public class MoodActivity extends ActionBarActivity {
         btnHappy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MoodActivity.this, MoodPlayer.class);
+                Intent intent = new Intent(MoodActivity.this, PlayMusicMenu.class);
+                moodChosen= new Mood("Happy");
+                intent.putExtra("mood",moodChosen.getName());
                 startActivity(intent);
             }
         });

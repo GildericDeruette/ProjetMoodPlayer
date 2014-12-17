@@ -11,22 +11,30 @@
             android:name=".MoodPlayer"
             class=".MoodPlayer"
             android:label="MoodPlayer" >
-
         </activity>
         <activity
             android:name=".MoodActivity"
-            class=".MoodActivity">
+            class=".MoodActivity" >
             <intent-filter>
-            <action
-                android:name="android.intent.action.MAIN"
-                android:value="android.intent.action.MAIN" />
+                <action
+                    android:name="android.intent.action.MAIN"
+                    android:value="android.intent.action.MAIN" />
 
-            <category
-                android:name="android.intent.category.LAUNCHER"
-                android:value="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category
+                    android:name="android.intent.category.LAUNCHER"
+                    android:value="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PlayMusicMenu"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_play_music_menu"
+            android:parentActivityName=".MoodActivity"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="douai.mines.isic.moodplayer.MoodActivity" />
         </activity>
     </application>
-
 
 </manifest>
