@@ -21,7 +21,7 @@ public class MoodActivity extends ActionBarActivity {
         btnHappy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MoodActivity.this, PlayMusicMenu.class);
+                Intent intent = new Intent(MoodActivity.this, MenuPrincipal.class);
                 moodChosen= new Mood("Happy");
                 intent.putExtra("mood",moodChosen.getName());
                 startActivity(intent);
@@ -31,7 +31,7 @@ public class MoodActivity extends ActionBarActivity {
         btnHappy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MoodActivity.this, PlayMusicMenu.class);
+                Intent intent = new Intent(MoodActivity.this, MenuPrincipal.class);
                 moodChosen= new Mood("Calm");
                 intent.putExtra("mood",moodChosen.getName());
                 startActivity(intent);
@@ -41,7 +41,7 @@ public class MoodActivity extends ActionBarActivity {
         btnHappy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MoodActivity.this, PlayMusicMenu.class);
+                Intent intent = new Intent(MoodActivity.this, MenuPrincipal.class);
                 moodChosen= new Mood("UnHappy");
                 intent.putExtra("mood",moodChosen.getName());
                 startActivity(intent);

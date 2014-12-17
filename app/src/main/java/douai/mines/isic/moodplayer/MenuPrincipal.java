@@ -2,17 +2,11 @@ package douai.mines.isic.moodplayer;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import android.widget.TextView;
 
 /**
  * Created by Gildéric on 10/12/2014.
@@ -76,8 +70,10 @@ public class MenuPrincipal extends Activity{
         humeur_btn = (Button) findViewById(R.id.humeur_btn);
         listeSelonHumeur_btn = (Button) findViewById(R.id.listeSelonHumeur_btn);
         listeGlobale_btn = (Button) findViewById(R.id.listeGlobale_btn);
+
+        Intent intent = getIntent();
         editText = (EditText) findViewById(R.id.editText);
-        editText.setText("000");
+        editText.setText(intent.getStringExtra("mood"));
 
     }
 
