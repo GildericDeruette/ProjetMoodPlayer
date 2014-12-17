@@ -12,16 +12,16 @@ import android.widget.ListView;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by zzmax_000 on 17/12/2014.
+ * Created by Gildéric on 10/12/2014.
  */
 public class MPInterface extends ListActivity {
 
-
-    private static final String MEDIA_PATH = new String("/res/");
+    private static final String MEDIA_PATH = new String("/sdcard/");
     private MediaPlayer mediaPlayer = new MediaPlayer();
-    private MoodPlayList moodPlayList= new MoodPlayList();
     private ImageButton playBtn = null;
     private ImageButton pauseBtn = null;
     private Button nextButton = null;
@@ -33,48 +33,28 @@ public class MPInterface extends ListActivity {
             setContentView(R.layout.mediaplayer);
             playBtn = (ImageButton)findViewById(R.id.playBtn);
             pauseBtn = (ImageButton)findViewById(R.id.pauseBtn);
-            updateSongList();
-        } catch (NullPointerException e) {
-            Log.v(getString(R.string.app_name), e.getMessage());
-        }
-    }
 
-    public void updateSongList() {
-        File home = new File(MEDIA_PATH);
-        if (home.listFiles( new MP3Filter()).length > 0) {
-            for (File file : home.listFiles( new MP3Filter())) {
-                moodPlayList.addSong(new Music(file));
-            }
 
-            ArrayAdapter<String> songList = new ArrayAdapter<String>(this,R.layout.song_item, moodPlayList.getListe());
-            setListAdapter(songList);
-        }
-    }
 
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        try {
             playBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mediaPlayer.isPlaying()){
                         mediaPlayer.pause();
                         //playBtn.setBackgroundResource(
-                              //  R.drawable.play_selecor);
+                        //  R.drawable.play_selecor);
                     } else{
                         mediaPlayer.start();
                         //playBtn.setBackgroundResource(
-                               // R.drawable.pause_selecor);
+                        // R.drawable.pause_selecor);
 
                     }
                 }
             });
-            //mediaPlayer.reset();
-            mediaPlayer.setDataSource(MEDIA_PATH + moodPlayList.getListe().get(position));
-           // mediaPlayer.prepare();
 
-        } catch(IOException e) {
+        } catch (NullPointerException e) {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
     }
+
 }
