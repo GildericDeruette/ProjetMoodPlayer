@@ -27,4 +27,24 @@ public class MoodPlayList {
     public void setListe(List<Music> liste) {
         this.liste = liste;
     }
+
+    public int findByTitle(String title){
+        int resultat=-1;
+        for (int i=0; i< liste.size();i++){
+            if(liste.get(i).toString().equals(title)){
+                resultat=i;
+            }
+        }
+        return resultat;
+    }
+
+    public void ecremerHumeur(Mood humeur){
+        ArrayList<Music> resultat= new ArrayList();
+        for (int i=0; i< liste.size();i++){
+            if(liste.get(i).getHumeurPrincipale().equals(humeur)){
+                resultat.add(liste.get(i));
+            }
+        }
+        liste= resultat;
+    }
 }
