@@ -27,6 +27,26 @@ public class MoodActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+        final Button btnCalm = (Button) findViewById(R.id.btnCalm);
+        btnHappy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MoodActivity.this, PlayMusicMenu.class);
+                moodChosen= new Mood("Calm");
+                intent.putExtra("mood",moodChosen.getName());
+                startActivity(intent);
+            }
+        });
+        final Button btnUnHappy = (Button) findViewById(R.id.btnUnHappy);
+        btnHappy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MoodActivity.this, PlayMusicMenu.class);
+                moodChosen= new Mood("UnHappy");
+                intent.putExtra("mood",moodChosen.getName());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
