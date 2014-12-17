@@ -26,19 +26,20 @@ public class MenuPrincipal extends Activity{
             super.onCreate(icicle);
            setContentView(R.layout.accueilhumeur);
             this.initialiser();
+
+            humeur_btn = (Button) findViewById(R.id.humeur_btn);
             humeur_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    editText.setText("111");
+                    Intent intent = new Intent(MenuPrincipal.this, MoodActivity.class);
 
-                    try{
-                      //  Intent intent =new Intent(MenuPrincipal.this,FichierChoisir.class);
-                     //   startActivityForResult(intent, MY_REQUEST_ID);
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
+                    startActivity(intent);
                 }
             });
+            Intent intent = getIntent();
+            editText = (EditText) findViewById(R.id.editText);
+            editText.setText(intent.getStringExtra("mood"));
+
 
 
 
@@ -71,9 +72,7 @@ public class MenuPrincipal extends Activity{
         listeSelonHumeur_btn = (Button) findViewById(R.id.listeSelonHumeur_btn);
         listeGlobale_btn = (Button) findViewById(R.id.listeGlobale_btn);
 
-        Intent intent = getIntent();
-        editText = (EditText) findViewById(R.id.editText);
-        editText.setText(intent.getStringExtra("mood"));
+
 
     }
 
