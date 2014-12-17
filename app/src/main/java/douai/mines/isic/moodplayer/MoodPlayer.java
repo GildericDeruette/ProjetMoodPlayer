@@ -17,34 +17,25 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import android.os.IBinder;
 
 /**
  * Created by Gildéric on 10/12/2014.
  */
 public class MoodPlayer extends ListActivity {
-    public static final String MEDIA_PATH = new String("/sdcard/");
+
+    private static final String MEDIA_PATH = new String("/sdcard/");
     private List<String> songs = new ArrayList<String>();
-    private MPSInterface mpInterface;
-    private ServiceConnection mConnection = new ServiceConnection() {
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            mpInterface = MPSInterface.Stub.asInterface((IBinder) service);
-            updateSongList();
-
-        }
-
-        public void onServiceDisconnected(ComponentName className) {
-            updateSongList();
-            mpInterface = null;
-        }
-    };
+    private MediaPlayer mediaPlayer = new MediaPlayer();
 
     @Override
     public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        setContentView(R.layout.songlist);
-        this.bindService(new Intent(MoodPlayer.this, MPService.class), mConnection, Context.BIND_AUTO_CREATE);
-
+        try {
+            super.onCreate(icicle);
+            setContentView(R.layout.songlist);
+            updateSongList();
+        } catch (NullPointerException e) {
+            Log.v(getString(R.string.app_name), e.getMessage());
+        }
     }
 
     public void updateSongList() {
@@ -63,8 +54,12 @@ public class MoodPlayer extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         try {
 
-        } catch (Exception e) {
-            Log.e(getString(R.string.app_name), e.getMessage());
+            mediaPlayer.reset();
+            mediaPlayer.setDataSource(MEDIA_PATH + songs.get(position));
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+        } catch(IOException e) {
+            Log.v(getString(R.string.app_name), e.getMessage());
         }
     }
 }
