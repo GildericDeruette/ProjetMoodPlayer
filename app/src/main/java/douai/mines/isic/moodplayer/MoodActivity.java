@@ -1,9 +1,12 @@
 package douai.mines.isic.moodplayer;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class MoodActivity extends ActionBarActivity {
@@ -12,8 +15,16 @@ public class MoodActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood);
-    }
 
+        final Button btnHappy = (Button) findViewById(R.id.btnHappy);
+        btnHappy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MoodActivity.this, MoodPlayer.class);
+                startActivity(intent);
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -21,6 +32,8 @@ public class MoodActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_mood, menu);
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
