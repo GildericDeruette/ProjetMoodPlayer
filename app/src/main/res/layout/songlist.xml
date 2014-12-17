@@ -8,7 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:drawSelectorOnTop="false"/>
+        android:drawSelectorOnTop="false" />
 
     <TextView android:id="@id/android:empty"
         android:layout_width="fill_parent"
@@ -19,6 +19,15 @@
         android:layout_width="fill_parent"
         android:layout_height="50px"
         android:orientation="horizontal">
+        <Button
+            android:id="@+id/buttonRetourMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:text="Retour Menu"
+            android:onClick="onClickButtonRetourMenu"
+            />
 
         <Button
             android:id="@+id/button"
@@ -26,7 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_weight="1"
-            android:text="Retour" />
+            android:text="Retour"
+            android:onClick="onClickButtonRetourPlayList" />
 
         <Button
             android:id="@+id/buttonOkPlaylist"
@@ -34,7 +44,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_weight="1"
-            android:text="Ok" />
+            android:text="Ok"
+            android:onClick="onClickButtonOk"
+            />
     </LinearLayout>
 
 </LinearLayout>

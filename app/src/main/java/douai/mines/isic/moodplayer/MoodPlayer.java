@@ -12,6 +12,7 @@ import android.widget.ListView;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public class MoodPlayer extends ListActivity {
     private static final String MEDIA_PATH = new String("/sdcard/");
     private MediaPlayer mediaPlayer = new MediaPlayer();
     private MoodPlayList moodPlayList= new MoodPlayList();
+    private MoodPlayList moodPlayListSelected= new MoodPlayList();
     private CheckBox checkBox;
 
     @Override
@@ -30,6 +32,7 @@ public class MoodPlayer extends ListActivity {
             super.onCreate(icicle);
             setContentView(R.layout.songlist);
             updateSongList();
+            moodPlayListSelected = new MoodPlayList();
             checkBox = (CheckBox) findViewById(R.id.checkbox);
         } catch (NullPointerException e) {
             Log.v(getString(R.string.app_name), e.getMessage());
@@ -42,11 +45,11 @@ public class MoodPlayer extends ListActivity {
             for (File file : home.listFiles( new MP3Filter())) {
                 moodPlayList.addSong(new Music(file));
             }
-
-            ArrayAdapter<String> songList = new ArrayAdapter<String>(this,R.layout.song_item, moodPlayList.getListe());
+            ArrayAdapter<Music> songList = new ArrayAdapter<Music>(this,R.layout.song_item, moodPlayList.getListe());
             setListAdapter(songList);
         }
     }
+
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
@@ -60,4 +63,27 @@ public class MoodPlayer extends ListActivity {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
     }
-}
+
+    public void onClickCheckBox(View v) {
+        try {
+           mediaPlayer.reset();
+           CheckBox laBox= (CheckBox) v;
+            int position=moodPlayList.findByTitle((String) laBox.getText());
+           if(laBox.isChecked()){
+                moodPlayListSelected.addSong((Music) moodPlayList.getListe().get(position));
+           }
+            else{
+               moodPlayListSelected.removeMusic((Music) moodPlayList.getListe().get(position));
+            };
+           mediaPlayer.setDataSource(MEDIA_PATH + moodPlayList.getListe().get(position));
+           mediaPlayer.prepare();
+           mediaPlayer.start();
+        } catch(IOException e) {
+            Log.v(getString(R.string.app_name), e.getMessage());
+        }}
+
+    public void onClickButtonOk(View v){
+            ArrayAdapter<Music> songList = new ArrayAdapter<Music>(this,R.layout.song_item, moodPlayListSelected.getListe());
+            setListAdapter(songList);
+        }
+    }
