@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.io.File;
@@ -28,27 +29,30 @@ public class MoodPlayer extends ListActivity {
     private Button listeSelonHumeur_btn;
     private Button listeGlobale_btn;
     private TextView untexteView;
+    private EditText editText;
+
 
     @Override
     public void onCreate(Bundle icicle) {
         try {
             super.onCreate(icicle);
-            setContentView(R.layout.accueilHumeur);
+           setContentView(R.layout.accueilhumeur);
             this.initialiser();
             humeur_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    editText.setText("111");
                     untexteView.setText("helllo");
                 }
             });
+
 
 
             listeSelonHumeur_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     untexteView.setText("helllo2");
-
+                   // editText.setText("222");
                 }
             });
 
@@ -56,12 +60,12 @@ public class MoodPlayer extends ListActivity {
             listeGlobale_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    //editText.setText("333");
                     untexteView.setText("helllo3");
 
                 }
             });
-            updateSongList();
+           // updateSongList();
         } catch (NullPointerException e) {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
@@ -73,8 +77,8 @@ public class MoodPlayer extends ListActivity {
         listeSelonHumeur_btn = (Button) findViewById(R.id.listeSelonHumeur_btn);
         listeGlobale_btn = (Button) findViewById(R.id.listeGlobale_btn);
         untexteView = (TextView) findViewById(R.id.untexteView);
-
-
+        editText = (EditText) findViewById(R.id.editText);
+        editText.setText("000");
 
     }
     public void updateSongList() {
