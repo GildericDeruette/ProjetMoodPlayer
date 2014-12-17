@@ -10,10 +10,13 @@
         android:layout_weight="1"
         android:drawSelectorOnTop="false"/>
 
-    <TextView android:id="@id/android:empty"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="No songs found on SD Card."/>
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/start"
+        android:layout_gravity="right"
+        android:src="@drawable/playbackstart" />
 
 
 </LinearLayout>
