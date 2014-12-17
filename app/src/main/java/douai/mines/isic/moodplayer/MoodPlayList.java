@@ -37,4 +37,14 @@ public class MoodPlayList {
         }
         return resultat;
     }
+
+    public MoodPlayList ecremerHumeur(Humeur humeur){
+        MoodPlayList resultat= new MoodPlayList();
+        for (int i=0; i< liste.size();i++){
+            if(liste.get(i).getHumeurPrincipale().equals(humeur)){
+                resultat.addSong(liste.get(i));
+            }
+        }
+        return resultat;
+    }
 }

@@ -1,6 +1,7 @@
 package douai.mines.isic.moodplayer;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,10 +26,17 @@ public class MoodPlayer extends ListActivity {
     private MoodPlayList moodPlayList= new MoodPlayList();
     private MoodPlayList moodPlayListSelected= new MoodPlayList();
     private CheckBox checkBox;
+    private Intent intent= getIntent();
+    private Humeur humeurCourante=new Humeur();
 
     @Override
     public void onCreate(Bundle icicle) {
         try {
+           // boolean isSuggestedMode=intent.getBooleanExtra("isSuggestedMode", false);
+           // if (isSuggestedMode){
+          //     String hum= intent.getStringExtra("Humeur");
+           //     humeurCourante.setLibelle(hum);
+          //  }
             super.onCreate(icicle);
             setContentView(R.layout.songlist);
             updateSongList();
@@ -43,8 +51,11 @@ public class MoodPlayer extends ListActivity {
         File home = new File(MEDIA_PATH);
         if (home.listFiles( new MP3Filter()).length > 0) {
             for (File file : home.listFiles( new MP3Filter())) {
-                moodPlayList.addSong(new Music(file));
+                Music muse=new Music(file);
+                muse.setHumeurPrincipale(new Humeur());
+                moodPlayList.addSong(muse);
             }
+          //  moodPlayList.ecremerHumeur(humeurCourante);
             ArrayAdapter<Music> songList = new ArrayAdapter<Music>(this,R.layout.song_item, moodPlayList.getListe());
             setListAdapter(songList);
         }
@@ -86,4 +97,12 @@ public class MoodPlayer extends ListActivity {
             ArrayAdapter<Music> songList = new ArrayAdapter<Music>(this,R.layout.song_item, moodPlayListSelected.getListe());
             setListAdapter(songList);
         }
+    public void onClickButtonRetourPlayList(View v){
+        ArrayAdapter<Music> songList = new ArrayAdapter<Music>(this,R.layout.song_item, moodPlayList.getListe());
+        setListAdapter(songList);
+    }
+
+    public void onClickButtonRetourMenu(View v){
+    }
+
     }
