@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -67,11 +68,13 @@ public class MoodPlayer extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         try {
-
-            mediaPlayer.reset();
-            mediaPlayer.setDataSource(MEDIA_PATH + moodPlayList.getListe().get(position));
-            mediaPlayer.prepare();
-            mediaPlayer.start();
+            CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox);
+            if( checkBox.isChecked()) {
+                mediaPlayer.reset();
+                mediaPlayer.setDataSource(MEDIA_PATH + moodPlayList.getListe().get(position));
+                mediaPlayer.prepare();
+                mediaPlayer.start();
+            }
         } catch(IOException e) {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
