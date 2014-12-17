@@ -30,7 +30,7 @@ public class MoodPlayer extends ListActivity {
         public void onServiceConnected(ComponentName className, IBinder service) {
             mpInterface = MPSInterface.Stub.asInterface((IBinder) service);
             updateSongList();
-            
+
         }
 
         public void onServiceDisconnected(ComponentName className) {
