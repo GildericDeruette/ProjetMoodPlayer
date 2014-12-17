@@ -42,11 +42,14 @@ public class MenuPrincipal extends Activity{
 
 
 
+            listeSelonHumeur_btn = (Button) findViewById(R.id.listeSelonHumeur_btn);
 
             listeSelonHumeur_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent intent = new Intent(MenuPrincipal.this, MoodPlayer.class);
 
+                    startActivity(intent);
                    // editText.setText("222");
                 }
             });

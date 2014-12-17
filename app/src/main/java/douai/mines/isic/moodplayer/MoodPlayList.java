@@ -38,7 +38,7 @@ public class MoodPlayList {
         return resultat;
     }
 
-    public void ecremerHumeur(Humeur humeur){
+    public void ecremerHumeur(Mood humeur){
         ArrayList<Music> resultat= new ArrayList();
         for (int i=0; i< liste.size();i++){
             if(liste.get(i).getHumeurPrincipale().equals(humeur)){

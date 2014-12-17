@@ -26,7 +26,7 @@ public class MoodPlayer extends ListActivity {
     private MoodPlayList moodPlayList= new MoodPlayList();
     private MoodPlayList moodPlayListSelected= new MoodPlayList();
     private CheckBox checkBox;
-    private Humeur humeurCourante=new Humeur();
+    private Mood humeurCourante=new Mood("nil");
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -35,7 +35,7 @@ public class MoodPlayer extends ListActivity {
             Boolean suggestedMode=intent.getBooleanExtra("mode", false);
            if (suggestedMode){
                String hum= intent.getStringExtra("Humeur");
-                humeurCourante.setLibelle(hum);
+                humeurCourante.setName(hum);
             }
            // humeurCourante=new Humeur("Joyeux");
             super.onCreate(icicle);
@@ -54,7 +54,7 @@ public class MoodPlayer extends ListActivity {
         if (home.listFiles( new MP3Filter()).length > 0) {
             for (File file : home.listFiles( new MP3Filter())) {
                 Music muse=new Music(file);
-                muse.setHumeurPrincipale(new Humeur());
+                muse.setHumeurPrincipale(new Mood("joyeux"));
                 moodPlayList.addSong(muse);
             }
             //moodPlayList.ecremerHumeur(humeurCourante);

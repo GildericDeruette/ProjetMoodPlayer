@@ -28,7 +28,7 @@ public class MoodActivity extends ActionBarActivity {
             }
         });
         final Button btnCalm = (Button) findViewById(R.id.btnCalm);
-        btnHappy.setOnClickListener(new View.OnClickListener() {
+        btnCalm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MoodActivity.this, MenuPrincipal.class);
@@ -38,7 +38,7 @@ public class MoodActivity extends ActionBarActivity {
             }
         });
         final Button btnUnHappy = (Button) findViewById(R.id.btnUnHappy);
-        btnHappy.setOnClickListener(new View.OnClickListener() {
+        btnUnHappy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MoodActivity.this, MenuPrincipal.class);
