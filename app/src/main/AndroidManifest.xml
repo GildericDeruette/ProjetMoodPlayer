@@ -10,11 +10,23 @@
         <activity
             android:name=".MoodPlayer"
             class=".MoodPlayer"
-            android:label="@string/app_name" >
+            android:label="MoodPlayer" >
+
+        </activity>
+        <activity
+            android:name=".MoodActivity"
+            class=".MoodActivity">
             <intent-filter>
-                <action android:value="android.intent.action.MAIN" android:name="android.intent.action.MAIN"/>
-                <category android:value="android.intent.category.LAUNCHER" android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <action
+                android:name="android.intent.action.MAIN"
+                android:value="android.intent.action.MAIN" />
+
+            <category
+                android:name="android.intent.category.LAUNCHER"
+                android:value="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
     </application>
+
+
 </manifest>

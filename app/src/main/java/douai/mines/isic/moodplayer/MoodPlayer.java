@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class MoodPlayer extends ListActivity {
 
-    private static final String MEDIA_PATH = new String("/sdcard/");
+    private static final String MEDIA_PATH = new String("emulated/storage/extSdCard/");
     private MediaPlayer mediaPlayer = new MediaPlayer();
     private MoodPlayList moodPlayList= new MoodPlayList();
 
