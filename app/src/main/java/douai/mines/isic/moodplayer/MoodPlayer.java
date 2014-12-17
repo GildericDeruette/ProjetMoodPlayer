@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import java.io.File;
@@ -21,6 +22,7 @@ public class MoodPlayer extends ListActivity {
     private static final String MEDIA_PATH = new String("/sdcard/");
     private MediaPlayer mediaPlayer = new MediaPlayer();
     private MoodPlayList moodPlayList= new MoodPlayList();
+    private CheckBox checkBox;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -28,6 +30,7 @@ public class MoodPlayer extends ListActivity {
             super.onCreate(icicle);
             setContentView(R.layout.songlist);
             updateSongList();
+            checkBox = (CheckBox) findViewById(R.id.checkbox);
         } catch (NullPointerException e) {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
