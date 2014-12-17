@@ -17,7 +17,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import android.os.IBinder;
 
 /**
  * Created by Gildéric on 10/12/2014.
@@ -25,11 +24,15 @@ import android.os.IBinder;
 public class MoodPlayer extends ListActivity {
     public static final String MEDIA_PATH = new String("/sdcard/");
     private List<String> songs = new ArrayList<String>();
+<<<<<<< HEAD
     private MPSInterface mpInterface;
     private ServiceConnection mConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder service) {
             mpInterface = MPSInterface.Stub.asInterface((IBinder) service);
             updateSongList();
+=======
+    private MediaPlayer mediaPlayer = new MediaPlayer();
+>>>>>>> db06bab124c1ec08deeedb32357849223a49160b
 
         }
 
@@ -62,19 +65,18 @@ public class MoodPlayer extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         try {
+
 <<<<<<< HEAD
-            mpInterface.playFile(position);
         } catch (Exception e) {
             Log.e(getString(R.string.app_name), e.getMessage());
 =======
-
-            mp.reset();
-            mp.setDataSource(MEDIA_PATH + songs.get(position));
-            mp.prepare();
-            mp.start();
+            mediaPlayer.reset();
+            mediaPlayer.setDataSource(MEDIA_PATH + songs.get(position));
+            mediaPlayer.prepare();
+            mediaPlayer.start();
         } catch(IOException e) {
             Log.v(getString(R.string.app_name), e.getMessage());
->>>>>>> 81e043d6d40000a70cc448d95d3a2c4b65ef7d9f
+>>>>>>> db06bab124c1ec08deeedb32357849223a49160b
         }
     }
 }
