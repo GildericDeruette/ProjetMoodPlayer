@@ -62,7 +62,7 @@ public class MoodPlayer extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         try {
-            mpInterface.playFile(position);
+
         } catch (Exception e) {
             Log.e(getString(R.string.app_name), e.getMessage());
         }
