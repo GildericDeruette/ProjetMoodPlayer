@@ -26,17 +26,18 @@ public class MoodPlayer extends ListActivity {
     private MoodPlayList moodPlayList= new MoodPlayList();
     private MoodPlayList moodPlayListSelected= new MoodPlayList();
     private CheckBox checkBox;
-    private Intent intent= getIntent();
     private Humeur humeurCourante=new Humeur();
 
     @Override
     public void onCreate(Bundle icicle) {
+        Intent intent= getIntent();
         try {
-           // boolean isSuggestedMode=intent.getBooleanExtra("isSuggestedMode", false);
-           // if (isSuggestedMode){
-          //     String hum= intent.getStringExtra("Humeur");
-           //     humeurCourante.setLibelle(hum);
-          //  }
+            Boolean suggestedMode=intent.getBooleanExtra("mode", false);
+           if (suggestedMode){
+               String hum= intent.getStringExtra("Humeur");
+                humeurCourante.setLibelle(hum);
+            }
+           // humeurCourante=new Humeur("Joyeux");
             super.onCreate(icicle);
             setContentView(R.layout.songlist);
             updateSongList();
@@ -48,6 +49,7 @@ public class MoodPlayer extends ListActivity {
     }
 
     public void updateSongList() {
+        int i=0;
         File home = new File(MEDIA_PATH);
         if (home.listFiles( new MP3Filter()).length > 0) {
             for (File file : home.listFiles( new MP3Filter())) {
@@ -55,7 +57,7 @@ public class MoodPlayer extends ListActivity {
                 muse.setHumeurPrincipale(new Humeur());
                 moodPlayList.addSong(muse);
             }
-          //  moodPlayList.ecremerHumeur(humeurCourante);
+            //moodPlayList.ecremerHumeur(humeurCourante);
             ArrayAdapter<Music> songList = new ArrayAdapter<Music>(this,R.layout.song_item, moodPlayList.getListe());
             setListAdapter(songList);
         }

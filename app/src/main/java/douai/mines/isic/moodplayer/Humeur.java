@@ -8,6 +8,11 @@ public class Humeur {
     public Humeur(){
         libelle="Nil";
     }
+
+    public Humeur(String uneHumeur){
+        libelle=uneHumeur;
+    }
+
     public String getLibelle() {
         return libelle;
     }
