@@ -1,0 +1,19 @@
+package douai.mines.isic.moodplayer;
+
+/**
+ * Created by donna on 17/12/2014.
+ */
+public class AccueilHumeur {
+   /* private Button champHumeur;
+    private Button   bouton1;
+    private Button bouton2;
+*/
+
+<<<<<<< HEAD
+=======
+
+
+   // public onClick
+
+>>>>>>> cf442b81b273121335209211e6607e22224ec1f5
+}
