@@ -8,9 +8,4 @@ public class AccueilHumeur {
     private Button   bouton1;
     private Button bouton2;
 
-
-
-
-    public onClick
-
 }
