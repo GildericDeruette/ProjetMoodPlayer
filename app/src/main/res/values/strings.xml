@@ -4,5 +4,8 @@
     <string name="app_name">MoodPlayer</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="humeur">Humeur</string>
+    <string name="listeSelonHumeur">ListeSelonHumeur</string>
+    <string name="listeGlobale">ListeGlobale</string>
+    <string name="untexte">texte</string>
 </resources>
