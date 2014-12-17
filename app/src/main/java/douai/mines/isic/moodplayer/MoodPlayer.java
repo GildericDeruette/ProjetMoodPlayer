@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import android.os.IBinder;
 
 /**
  * Created by Gildéric on 10/12/2014.
@@ -20,8 +19,8 @@ import android.os.IBinder;
 public class MoodPlayer extends ListActivity {
 
     private static final String MEDIA_PATH = new String("/sdcard/");
-    private List<String> songs = new ArrayList<String>();
-    private MediaPlayer mp = new MediaPlayer();
+    private MediaPlayer mediaPlayer = new MediaPlayer();
+    private MoodPlayList moodPlayList= new MoodPlayList();
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -38,10 +37,10 @@ public class MoodPlayer extends ListActivity {
         File home = new File(MEDIA_PATH);
         if (home.listFiles( new MP3Filter()).length > 0) {
             for (File file : home.listFiles( new MP3Filter())) {
-                songs.add(file.getName());
+                moodPlayList.addSong(new Music(file));
             }
 
-            ArrayAdapter<String> songList = new ArrayAdapter<String>(this,R.layout.song_item,songs);
+            ArrayAdapter<String> songList = new ArrayAdapter<String>(this,R.layout.song_item, moodPlayList.getListe());
             setListAdapter(songList);
         }
     }
@@ -50,10 +49,10 @@ public class MoodPlayer extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         try {
 
-            mp.reset();
-            mp.setDataSource(MEDIA_PATH + songs.get(position));
-            mp.prepare();
-            mp.start();
+            mediaPlayer.reset();
+            mediaPlayer.setDataSource(MEDIA_PATH + moodPlayList.getListe().get(position));
+            mediaPlayer.prepare();
+            mediaPlayer.start();
         } catch(IOException e) {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
