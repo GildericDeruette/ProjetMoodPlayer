@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import android.os.IBinder;
 
 /**
  * Created by Gildéric on 10/12/2014.
@@ -35,8 +36,8 @@ public class MoodPlayer extends ListActivity {
 
     public void updateSongList() {
         File home = new File(MEDIA_PATH);
-        if (home.listFiles( new Mp3Filter()).length > 0) {
-            for (File file : home.listFiles( new Mp3Filter())) {
+        if (home.listFiles( new MP3Filter()).length > 0) {
+            for (File file : home.listFiles( new MP3Filter())) {
                 songs.add(file.getName());
             }
 
@@ -48,6 +49,7 @@ public class MoodPlayer extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         try {
+
             mp.reset();
             mp.setDataSource(MEDIA_PATH + songs.get(position));
             mp.prepare();
