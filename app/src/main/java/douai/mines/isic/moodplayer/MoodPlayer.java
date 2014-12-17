@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import android.os.IBinder;
 
 /**
  * Created by Gildéric on 10/12/2014.
@@ -21,7 +20,7 @@ public class MoodPlayer extends ListActivity {
 
     private static final String MEDIA_PATH = new String("/sdcard/");
     private List<String> songs = new ArrayList<String>();
-    private MediaPlayer mp = new MediaPlayer();
+    private MediaPlayer mediaPlayer = new MediaPlayer();
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -50,10 +49,10 @@ public class MoodPlayer extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         try {
 
-            mp.reset();
-            mp.setDataSource(MEDIA_PATH + songs.get(position));
-            mp.prepare();
-            mp.start();
+            mediaPlayer.reset();
+            mediaPlayer.setDataSource(MEDIA_PATH + songs.get(position));
+            mediaPlayer.prepare();
+            mediaPlayer.start();
         } catch(IOException e) {
             Log.v(getString(R.string.app_name), e.getMessage());
         }
